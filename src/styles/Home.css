@@ -1,0 +1,38 @@
+.head-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.head-content h1 {
+  font-size: 64px;
+}
+
+.head-content span {
+  font-family: "Ubuntu-Thin";
+  margin-right: 0.1em;
+}
+
+.btn-shop {
+  margin-top: 0.8em;
+  border: none;
+  background-color: #ff798f;
+  padding: 12px 22px 12px 22px;
+  border-radius: 5px;
+  font-family: "Ubuntu-Thin";
+  transition: all 0.3s;
+  color: white;
+}
+
+.btn-shop:active {
+  background-color: #f9002a;
+  transform: scale(1.125);
+  animation: go-to 0.1s ease-in-out;
+}
+
+@keyframes go-to {
+  0% {}
+
+  100% {}
+}
