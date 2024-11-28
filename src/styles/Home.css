@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 8em;
 }
 
 .head-content h1 {
@@ -29,6 +30,10 @@
   background-color: #f9002a;
   transform: scale(1.125);
   animation: go-to 0.1s ease-in-out;
+}
+
+.btn-shop:hover {
+  background-color: #f9002a;
 }
 
 @keyframes go-to {

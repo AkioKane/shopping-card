@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "../styles/Home.css";
 
 function Home() {

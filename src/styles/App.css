@@ -19,6 +19,7 @@
   border-radius: 16px;
   color: white;
   font-family: "Ubuntu";
+  box-shadow: 0 0 4px #383838;
   
   * {
     margin-left: 1.5em;
@@ -64,6 +65,7 @@
 .menu h2 {
   display: flex;
   align-items: center;
+  margin-bottom: 0.25em;
 }
 
 .menu .head img {
@@ -73,9 +75,13 @@
   padding: 5px;
   background-color: white;
   border-radius: 50%;
-  height: 32px;
+  height: 42px;
   transform: rotate(0.5deg);
-  animation: spin 10s ease-in-out 0.5s infinite;
+  animation: spin 10s ease-in-out infinite;
+}
+
+.menu .head h1 {
+  transition: all 0.3s ease-in-out;
 }
 
 .icon {
@@ -86,6 +92,14 @@
 .content {
   width: var(--content-head-width);
   height: 100vh;
+}
+
+.logo-head {
+  transition: all 0.1s ease-in-out;
+}
+
+.logo-head:hover {
+  scale: 1.2;
 }
 
 @keyframes spin {
