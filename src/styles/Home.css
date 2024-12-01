@@ -22,6 +22,7 @@
   padding: 12px 22px 12px 22px;
   border-radius: 5px;
   font-family: "Ubuntu-Thin";
+  font-weight: 900;
   transition: all 0.3s;
   color: white;
 }
@@ -33,7 +34,7 @@
 }
 
 .btn-shop:hover {
-  background-color: #f9002a;
+  background-color: #fc4f6c;
 }
 
 @keyframes go-to {

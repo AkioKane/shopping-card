@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import "../styles/Home.css";
 
 function Home() {
   return (
     <>
-      <div className="content head-content">
+      <div className="head-content">
         <h1>
           <span
             style={{
@@ -12,7 +11,7 @@ function Home() {
             }}
           >
             Paw
-          </span>Clothes
+          </span>Store
         </h1>
         <span>We sell rare, exclusive products and clothing all over the world.</span>
         <a href="shop"><button className="btn-shop">View</button></a>

@@ -1,45 +1,44 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/Card.css";
 
-async function getData(category, id) {
-  const response = await fetch(
-    `https://api.escuelajs.co/api/v1/products/?categoryId=${category}`, 
-    {mode: "cors"}
-  );
-  const data = await response.json();
-  return data[id];
-}
-
-function Card({ category, id }) {
+function Card({ dataCategory, id }) {
   const [data, setData] = useState(null)
-
-  useEffect(() => {
-    async function fetchData() {
-      setData(await getData(category, id))
-    }
-
-    fetchData()
-  }, []);
+  const [clickedAdd, setClickedAdd] = useState([])
 
   return (
     <>
-      <div 
+      <div
         className="card"
         onClick={() => {
-          console.log(data)
-        }} // comment
+          console.log(data);
+        }} // delete
       >
-        <img 
+        <img
           className="img-card"
-          src={data ? data.images[0] : ""} 
-          alt={data ? "" : "Loading..."} 
+          src={dataCategory ? dataCategory[id].image : ""}
+          alt={dataCategory ? "" : "Loading..."}
         />
         <div className="info-card">
-          
+          <h1 className="info-h1">{dataCategory ? dataCategory[id].model : "Loading..."}</h1>
+          <h2 className="info-h2">
+            {dataCategory
+              ? dataCategory[id].brand.charAt(0).toUpperCase() + dataCategory[id].brand.slice(1)
+              : "Loading..."}
+          </h2>
+          <div className="add-to-card">
+            <button 
+              className="add-btn"
+              onClick={() => {
+                const newArray = []
+                setClickedAdd()
+              }}
+            >Add to card +</button>
+            <p>{dataCategory ? `$${dataCategory[id].price}` : "Loading..."}</p>
+          </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Card;

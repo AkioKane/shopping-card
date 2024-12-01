@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import iconHead from "./assets/paw.png";
 import home from "./assets/home.svg";
@@ -7,9 +7,26 @@ import shop from "./assets/store.svg";
 import shopPink from "./assets/store-pink.svg";
 import './styles/App.css';
 
+async function getData(category) {
+  const response = await fetch(
+    `https://fakestoreapi.in/api/products/category?type=${category}`, 
+    {mode: "cors"}
+  );
+  const data = await response.json();
+  return data.products;
+}
+
 function App() {
+  const [dataMobile, setDataMobile] = useState(null)
   const [activeComponent, setActiveComponent] = useState("home");
   const [hoverElement, setHoverElement] = useState(null)
+
+  useEffect(() => {
+    async function fetchData(category) {
+      setDataMobile(await getData(category))
+    }
+    fetchData("mobile")
+  }, []);
 
   return (
     <>
@@ -25,7 +42,7 @@ function App() {
                 }}
               >Paw
               </span>
-              Clothes
+              Store
             </h1>
             <img className='logo-head' src={iconHead} alt="icon" />
           </div>
@@ -47,6 +64,7 @@ function App() {
                 src={activeComponent === "home" || 
                   hoverElement === "home" ? homePink : home}
                 alt="home" 
+                onClick={() => {console.log(dataMobile)}}
               />
               Home
             </h2>
@@ -76,7 +94,7 @@ function App() {
         </aside>
 
         <div className="content">
-          <Outlet context={{ setActiveComponent }}/>
+          <Outlet context={{ setActiveComponent, dataMobile }}/>
         </div>
       </div>
     </>

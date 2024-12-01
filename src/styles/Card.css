@@ -1,29 +1,81 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2em;
+  justify-content: space-evenly;
+  gap: 3em;
+  transition: all 0.3s ease-in-out;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 280px;
+  height: 345px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .img-card {
-  height: 210px;
+  height: 250px;
   width: 100%;
   object-fit: cover;
   border-radius: 16px 16px 0 0;
   color: white;
+  cursor: pointer;
 }
 
 .info-card {
   display: flex;
-  height: calc(280px - 210px);
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95px;
   width: 100%;
   background-color: #303136;
   border-radius: 0 0 16px 16px;
+  gap: 0.25em;
+}
+
+.info-card h1,
+.info-card h2,
+.info-card .add-to-card {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.info-h1 {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.info-h2 {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+.add-to-card {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(153, 153, 153);
+  margin-bottom: 1em;
+}
+
+.add-to-card .add-btn {
+  border: none;
+  background-color: inherit;
+  color: rgb(153, 153, 153);
+  font-family: "Park";
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-to-card p {
+  font-weight: 600;
 }
