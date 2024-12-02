@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../styles/Card.css";
 
 function Card({ dataCategory, id }) {
-  const [data, setData] = useState(null)
   const [clickedAdd, setClickedAdd] = useState([])
 
   return (
@@ -10,7 +9,7 @@ function Card({ dataCategory, id }) {
       <div
         className="card"
         onClick={() => {
-          console.log(data);
+          console.log(dataCategory[id]);
         }} // delete
       >
         <img

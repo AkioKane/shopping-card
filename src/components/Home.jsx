@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
 function Home() {
@@ -14,7 +15,7 @@ function Home() {
           </span>Store
         </h1>
         <span>We sell rare, exclusive products and clothing all over the world.</span>
-        <a href="shop"><button className="btn-shop">View</button></a>
+        <Link to={"shop"}><button className="btn-shop">View</button></Link>
       </div>
     </>
   )

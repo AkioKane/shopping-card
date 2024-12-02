@@ -64,7 +64,6 @@ function App() {
                 src={activeComponent === "home" || 
                   hoverElement === "home" ? homePink : home}
                 alt="home" 
-                onClick={() => {console.log(dataMobile)}}
               />
               Home
             </h2>

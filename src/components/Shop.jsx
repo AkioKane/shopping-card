@@ -8,7 +8,6 @@ function Shop() {
 
   useEffect(() => {
     setActiveComponent("shop")
-    console.log(dataMobile)
   }, [])
 
   return (
