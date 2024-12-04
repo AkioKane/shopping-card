@@ -1,24 +1,25 @@
 .cart-content {
-  background: linear-gradient(180deg, rgba(34,35,37,1) 50%, rgba(63,64,64,1) 85%);
+  background: linear-gradient(45deg, rgba(28,25,23,1) 0%, rgba(96,0,16,1) 52%, rgba(47,0,8,1) 97%);
   height: 90vh;
   width: var(--content-head-width);
   border-radius: 16px;
   box-shadow: 0 0 4px #383838;
-  overflow: auto;
   padding-bottom: 2em;
+  overflow: hidden;
+  position: relative;
 }
 
-.cart-content::-webkit-scrollbar {
+.content-cart::-webkit-scrollbar {
   width: 15px;
   color: white;
   border-radius: 0 8px 8px 0;
-  background: linear-gradient(180deg, rgba(34,35,37,1) 50%, rgba(63,64,64,1) 85%);
+  background-color: #2b2b2b;
 }
 
-.cart-content::-webkit-scrollbar-thumb {
-  background-color: #525252;
+.content-cart::-webkit-scrollbar-thumb {
+  background-color: #464646;
   border-radius: 8px;
-  border: 4px solid #393939;
+  border: 4px solid #2b2b2b;
 }
 
 .content-cart {
@@ -28,11 +29,36 @@
   width: 100%;
   height: 100%;
   color: white;
-  padding: 3em 2em 3em 2em;
-  
+  padding: 1em 2em 4.7em 2em;
   gap: 2em;
+  overflow: auto;
 }
 
-.content-cart .card {
-  padding-bottom: 2em;
+.content-cart .head-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 48px;
+}
+
+.order-bar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--content-head-width);
+  bottom: 0;
+  height: 80px;
+  color: white;
+  background: rgb(28,25,23);
+  background: linear-gradient(45deg, rgba(28,25,23,1) 0%, rgba(96,0,16,1) 52%, rgba(47,0,8,1) 97%);
+  border-top: 2px solid #2f0202;
+  border-radius: 0 0 16px 16px;
+
+  * {
+    font-family: "Ubuntu-Thin";
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+  }
 }
