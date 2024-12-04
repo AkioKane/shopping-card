@@ -5,6 +5,8 @@ import home from "./assets/home.svg";
 import homePink from "./assets/home-pink.svg";
 import shop from "./assets/store.svg";
 import shopPink from "./assets/store-pink.svg";
+import cart from "./assets/shopping_cart.svg";
+import cartPink from "./assets/shopping_cart_pink.svg";
 import './styles/App.css';
 
 async function getData(category) {
@@ -12,6 +14,7 @@ async function getData(category) {
     `https://fakestoreapi.in/api/products/category?type=${category}`, 
     {mode: "cors"}
   );
+
   const data = await response.json();
   return data.products;
 }
@@ -20,6 +23,7 @@ function App() {
   const [dataMobile, setDataMobile] = useState(null)
   const [activeComponent, setActiveComponent] = useState("home");
   const [hoverElement, setHoverElement] = useState(null)
+  const [cartList, setCartList] = useState([])
 
   useEffect(() => {
     async function fetchData(category) {
@@ -85,15 +89,36 @@ function App() {
                 className='icon' 
                 src={activeComponent === "shop" || 
                   hoverElement === "shop" ? shopPink : shop}
-                alt="home" 
+                alt="cart" 
               />
               Shop
+            </h2>
+          </Link>
+          <Link 
+            to={'cart'} 
+            onClick={() => {setActiveComponent("cart")}}
+            onMouseOver={() => {setHoverElement("cart")}}
+            onMouseOut={() => {setHoverElement(null)}}
+            style={{
+              color: activeComponent === "cart" ? "#ff798f" : "white",
+              transform: activeComponent === "cart" ? "scale(1.1)" : "none",
+              transition: "all 0.1s ease-in-out",
+            }}
+          >
+            <h2>
+              <img 
+                className='icon' 
+                src={activeComponent === "cart" || 
+                  hoverElement === "cart" ? cartPink : cart}
+                alt="cart" 
+              />
+              Cart
             </h2>
           </Link>
         </aside>
 
         <div className="content">
-          <Outlet context={{ setActiveComponent, dataMobile }}/>
+          <Outlet context={{ setActiveComponent, dataMobile, cartList, setCartList }}/>
         </div>
       </div>
     </>

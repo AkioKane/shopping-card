@@ -69,6 +69,9 @@
 }
 
 .add-to-card .add-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: inherit;
   color: rgb(153, 153, 153);
@@ -79,4 +82,8 @@
 
 .add-to-card p {
   font-weight: 600;
+}
+
+.clicked {
+  color: #29A383 !important;
 }

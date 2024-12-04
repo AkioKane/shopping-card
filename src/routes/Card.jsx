@@ -1,8 +1,10 @@
 import { useState } from "react";
+import check from "../assets/check.svg";
 import "../styles/Card.css";
 
-function Card({ dataCategory, id }) {
-  const [clickedAdd, setClickedAdd] = useState([])
+function Card({ dataCategory, id, setCartList, cartList }) {
+  const [clickedAdd, setClickedAdd] = useState(false);
+  const [onHover, setOnHover] = useState(false)
 
   return (
     <>
@@ -11,6 +13,8 @@ function Card({ dataCategory, id }) {
         onClick={() => {
           console.log(dataCategory[id]);
         }} // delete
+        onMouseOver={() => {setOnHover(true)}}
+        onMouseOut={() => {setOnHover(false)}}
       >
         <img
           className="img-card"
@@ -26,12 +30,21 @@ function Card({ dataCategory, id }) {
           </h2>
           <div className="add-to-card">
             <button 
-              className="add-btn"
+              className={`add-btn ${clickedAdd || cartList.includes(dataCategory[id]) ? "clicked" : ""}`}
               onClick={() => {
-                const newArray = []
-                setClickedAdd()
+                if (cartList.includes(dataCategory[id])) {
+                  let array = cartList.filter(item => item !== dataCategory[id])
+                  setCartList(array);
+                  setClickedAdd(false);
+                  return;
+                }
+
+                setCartList((prevData) => [...prevData, dataCategory[id]]);
+                setClickedAdd(true);
               }}
-            >Add to card +</button>
+            >{clickedAdd || cartList.includes(dataCategory[id]) ? "Added" : "Add to card +"}
+              {clickedAdd || cartList.includes(dataCategory[id]) ? <img src={check} alt="check mark" /> : ""}
+            </button>
             <p>{dataCategory ? `$${dataCategory[id].price}` : "Loading..."}</p>
           </div>
         </div>
