@@ -3,12 +3,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
   width: 100%;
   height: 100vh;
-  font-family: "Roboto";
+}
+
+.error-h1 {
+  font-size: 52px;
 }
 
 .error-page span {
+  font-size: 1.2rem;
   font-family: "Ubuntu-Thin";
 }

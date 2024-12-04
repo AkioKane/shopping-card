@@ -4,7 +4,7 @@ function ErrorPage() {
   return (
     <>
       <div className="error-page">
-        <h1>Page is not found!</h1>
+        <h1 className="error-h1">Page is not found!</h1>
         <span>Sorry, an unexpected error has occurred.</span>
       </div>
     </>
