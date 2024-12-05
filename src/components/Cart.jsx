@@ -1,15 +1,16 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Card from "../routes/Card";
+import { CardCart } from "./Card";
 import "../styles/Cart.css";
 
 function Cart() {
-  const { setCartList, cartList } = useOutletContext();
+  const { setCartList, cartList, setActiveComponent } = useOutletContext();
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
     const newTotal = cartList.reduce((acc, el) => acc + el.price, 0);
     setTotal(newTotal);
+    setActiveComponent("cart");
   }, [cartList])
 
   return (
@@ -19,7 +20,7 @@ function Cart() {
           <h1 className="head-cart">Cart</h1>
           {cartList ? cartList.map((_, index) => {
             return (
-              <Card key={index}
+              <CardCart key={index}
                 dataCategory={cartList ? cartList : null}
                 id={index}
                 cartList={cartList}

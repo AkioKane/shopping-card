@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import Card from "../routes/Card";
+import Card from "./Card";
 import "../styles/Shop.css";
 
 function Shop() {
