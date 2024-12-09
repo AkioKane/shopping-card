@@ -74,7 +74,7 @@
   border-radius: 50%;
   height: 42px;
   transform: rotate(0.5deg);
-  animation: spin 10s ease-in-out infinite;
+  animation: spin 13s linear infinite;
 }
 
 .menu .head h1 {

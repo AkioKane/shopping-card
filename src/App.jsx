@@ -20,16 +20,26 @@ async function getData(category) {
 }
 
 function App() {
-  const [dataMobile, setDataMobile] = useState(null)
+  const [dataMobile, setDataMobile] = useState(null);
+  const [dataAudio, setDataAudio] = useState(null);
+  const [dataGaming, setDataGaming] = useState(null);
+  const [dataLaptop, setDataLaptop] = useState(null);
+  const [dataTv, setDataTv] = useState(null);
+  const [dataAppliances, setDataAppliances] = useState(null);
   const [activeComponent, setActiveComponent] = useState("home");
-  const [hoverElement, setHoverElement] = useState(null)
-  const [cartList, setCartList] = useState([])
+  const [hoverElement, setHoverElement] = useState(null);
+  const [cartList, setCartList] = useState([]);
 
   useEffect(() => {
-    async function fetchData(category) {
-      setDataMobile(await getData(category))
+    async function fetchData() {
+      setDataMobile(await getData("mobile"));
+      setDataAudio(await getData("audio"));
+      setDataGaming(await getData("gaming"));
+      setDataLaptop(await getData("laptop"));
+      setDataTv(await getData("tv"));
+      setDataAppliances(await getData("appliances"));
     }
-    fetchData("mobile")
+    fetchData();
   }, []);
 
   return (
@@ -38,24 +48,31 @@ function App() {
         <aside className="menu">
           <div className="head">
             <h1>
-              <span 
+              <span
                 style={{
                   color: "#ff798f",
                   margin: 0,
                   marginRight: "0.1em",
                 }}
-              >Paw
+              >
+                Paw
               </span>
               Store
             </h1>
-            <img className='logo-head' src={iconHead} alt="icon" />
+            <img className="logo-head" src={iconHead} alt="icon" />
           </div>
-          
-          <Link 
-            to={'/'} 
-            onClick={() => {setActiveComponent("home")}}
-            onMouseOver={() => {setHoverElement("home")}}
-            onMouseOut={() => {setHoverElement(null)}}
+
+          <Link
+            to={"/"}
+            onClick={() => {
+              setActiveComponent("home");
+            }}
+            onMouseOver={() => {
+              setHoverElement("home");
+            }}
+            onMouseOut={() => {
+              setHoverElement(null);
+            }}
             style={{
               color: activeComponent === "home" ? "#ff798f" : "white",
               transform: activeComponent === "home" ? "scale(1.1)" : "none",
@@ -63,21 +80,30 @@ function App() {
             }}
           >
             <h2>
-              <img 
-                className='icon' 
-                src={activeComponent === "home" || 
-                  hoverElement === "home" ? homePink : home}
-                alt="home" 
+              <img
+                className="icon"
+                src={
+                  activeComponent === "home" || hoverElement === "home"
+                    ? homePink
+                    : home
+                }
+                alt="home"
               />
               Home
             </h2>
           </Link>
 
-          <Link 
-            to={'shop'} 
-            onClick={() => {setActiveComponent("shop")}}
-            onMouseOver={() => {setHoverElement("shop")}}
-            onMouseOut={() => {setHoverElement(null)}}
+          <Link
+            to={"shop"}
+            onClick={() => {
+              setActiveComponent("shop");
+            }}
+            onMouseOver={() => {
+              setHoverElement("shop");
+            }}
+            onMouseOut={() => {
+              setHoverElement(null);
+            }}
             style={{
               color: activeComponent === "shop" ? "#ff798f" : "white",
               transform: activeComponent === "shop" ? "scale(1.1)" : "none",
@@ -85,20 +111,29 @@ function App() {
             }}
           >
             <h2>
-              <img 
-                className='icon' 
-                src={activeComponent === "shop" || 
-                  hoverElement === "shop" ? shopPink : shop}
-                alt="cart" 
+              <img
+                className="icon"
+                src={
+                  activeComponent === "shop" || hoverElement === "shop"
+                    ? shopPink
+                    : shop
+                }
+                alt="cart"
               />
               Shop
             </h2>
           </Link>
-          <Link 
-            to={'cart'} 
-            onClick={() => {setActiveComponent("cart")}}
-            onMouseOver={() => {setHoverElement("cart")}}
-            onMouseOut={() => {setHoverElement(null)}}
+          <Link
+            to={"cart"}
+            onClick={() => {
+              setActiveComponent("cart");
+            }}
+            onMouseOver={() => {
+              setHoverElement("cart");
+            }}
+            onMouseOut={() => {
+              setHoverElement(null);
+            }}
             style={{
               color: activeComponent === "cart" ? "#ff798f" : "white",
               transform: activeComponent === "cart" ? "scale(1.1)" : "none",
@@ -106,11 +141,14 @@ function App() {
             }}
           >
             <h2>
-              <img 
-                className='icon' 
-                src={activeComponent === "cart" || 
-                  hoverElement === "cart" ? cartPink : cart}
-                alt="cart" 
+              <img
+                className="icon"
+                src={
+                  activeComponent === "cart" || hoverElement === "cart"
+                    ? cartPink
+                    : cart
+                }
+                alt="cart"
               />
               Cart
             </h2>
@@ -118,11 +156,23 @@ function App() {
         </aside>
 
         <div className="content">
-          <Outlet context={{ setActiveComponent, dataMobile, cartList, setCartList }}/>
+          <Outlet
+            context={{
+              setActiveComponent,
+              dataMobile,
+              dataAudio,
+              dataGaming,
+              dataLaptop,
+              dataTv,
+              dataAppliances,
+              cartList,
+              setCartList,
+            }}
+          />
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default App

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import check from "../assets/check.svg";
+import deleteIcon from "../assets/delete.svg";
 import "../styles/Card.css";
 
 function Card({ dataCategory, id, setCartList, cartList }) {
@@ -81,6 +82,15 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
             <h3>{dataCategory ? `Price: $ ${dataCategory[id].price.toLocaleString('en-US')}` : "Loading..."}</h3>
           </div>
         </div>
+        <button 
+          className="delete-card"
+          onClick={() => {
+            let array = cartList.filter(item => item !== dataCategory[id])
+            setCartList(array);
+          }}
+        >
+          <img src={deleteIcon} alt="delete" />
+        </button>
       </div>
     </>
   )

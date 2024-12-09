@@ -21,9 +21,9 @@
 .img-card {
   height: 250px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 16px 16px 0 0;
-  background-color: #303136;
+  background-color: white;
   color: white;
   cursor: pointer;
 }
@@ -32,7 +32,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 95px;
   width: 100%;
   background-color: #303136;
   border-radius: 0 0 16px 16px;
@@ -89,12 +88,15 @@
 }
 
 .card-cart {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   background-color: #391714;
+  background: linear-gradient(90deg, rgba(48,49,54,1) 0%, rgba(110,41,32,1) 72%);
   border-radius: 16px;
+  transition: all 0.15s ease-in-out;
 }
 
 .card-cart .content-card-cart {
@@ -104,7 +106,7 @@
 }
 
 .card-cart .content-card-cart .info-card-cart {
-  width: calc(100% - 150px - 4em);
+  width: calc(100% - 150px - 4.5em);
   text-align: justify;
 }
 
@@ -114,20 +116,38 @@
 }
 
 .card-cart .content-card-cart .info-card-cart h3 {
+  position: absolute;
+  bottom: 2em;
   font-family: "Ubuntu-Thin";
   margin-top: 0.5em;
 }
 
 .card-cart .content-card-cart .info-card-cart p {
   font-family: "Ubuntu-Thin";
+  margin-bottom: 2.5em;
 }
 
 .card-cart .content-card-cart .item-img {
   height: 150px;
   width: 150px;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: white;
   border-radius: 16px;
-  background: linear-gradient(90deg, rgba(48,49,54,1) 0%, rgba(110,41,32,1) 72%);
   color: white;
   cursor: pointer;
+}
+
+.delete-card {
+  position: absolute;
+  background-color: #ea4d2d;
+  border: none;
+  height: 100%;
+  width: 60px;
+  right: 0;
+  border-radius: 0 16px 16px 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.delete-card:hover {
+  background-color: #d74123;
 }
