@@ -20,11 +20,29 @@ function Shop() {
     setActiveComponent("shop")
   }, [])
 
+  const isMobile = () => {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
+
+  const styleHeader = () => {
+    if (isMobile() === false) {
+      return {
+        width: "100%"
+      }
+    } return {
+      width: "10em"
+    }
+  }
+
   return (
     <>
       <div className="shop-content">
-        <div className="container-shop sneakers">
-          <h1 className="header-shop">Mobiles</h1>
+        <div 
+          className="container-shop sneakers"
+        >
+          <h1 className="header-shop" style={styleHeader()}>Mobiles</h1>
           <div className="cards">
             {dataMobile ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
               <Card key={id} 
@@ -37,7 +55,7 @@ function Shop() {
           </div>
         </div>
         <div className="container-shop audio">
-          <h1 className="header-shop">Audio</h1>
+          <h1 className="header-shop" style={styleHeader()}>Audio</h1>
           <div className="cards">
             {dataAudio ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
               <Card key={id} 
@@ -50,7 +68,7 @@ function Shop() {
           </div>
         </div>
         <div className="container-shop gaming">
-          <h1 className="header-shop">Gaming</h1>
+          <h1 className="header-shop" style={styleHeader()}>Gaming</h1>
           <div className="cards">
             {dataGaming ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
               <Card key={id} 
@@ -63,7 +81,7 @@ function Shop() {
           </div>
         </div>
         <div className="container-shop laptop">
-          <h1 className="header-shop">Laptop</h1>
+          <h1 className="header-shop" style={styleHeader()}>Laptop</h1>
           <div className="cards">
             {dataLaptop ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
               <Card key={id} 
@@ -76,7 +94,7 @@ function Shop() {
           </div>
         </div>
         <div className="container-shop tv">
-          <h1 className="header-shop">TV</h1>
+          <h1 className="header-shop" style={styleHeader()}>TV</h1>
           <div className="cards">
             {dataTv ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
               <Card key={id} 
@@ -89,7 +107,7 @@ function Shop() {
           </div>
         </div>
         <div className="container-shop appliances">
-          <h1 className="header-shop">Appliances</h1>
+          <h1 className="header-shop" style={styleHeader()}>Appliances</h1>
           <div className="cards">
             {dataAppliances ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
               <Card key={id} 

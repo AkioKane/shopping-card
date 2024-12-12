@@ -7,6 +7,7 @@ import shop from "./assets/store.svg";
 import shopPink from "./assets/store-pink.svg";
 import cart from "./assets/shopping_cart.svg";
 import cartPink from "./assets/shopping_cart_pink.svg";
+import menu from "./assets/menu.svg";
 import './styles/App.css';
 
 async function getData(category) {
@@ -29,6 +30,14 @@ function App() {
   const [activeComponent, setActiveComponent] = useState("home");
   const [hoverElement, setHoverElement] = useState(null);
   const [cartList, setCartList] = useState([]);
+  const [activeBar, setActiveBar] = useState(false);
+  const [closeBar, setCloseBar] = useState(false);
+
+  const isMobile = () => {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -42,10 +51,43 @@ function App() {
     fetchData();
   }, []);
 
-  return (
-    <>
-      <div className="main">
-        <aside className="menu">
+  const mobileSideBar = () => {
+    return (
+      <button 
+        className='show-sidebar'
+        style={{
+          left: activeBar ? "calc(-2em + 320px)" : "-2em"
+        }}
+        onClick={() => {
+          if (activeBar) {
+            return setActiveBar(false)
+          }
+          return setActiveBar(true)
+        }}
+      >
+        <img src={menu} alt="Menu" />
+      </button>
+    )
+  }
+
+  const styleSideBar = () => {
+    if (isMobile() === false) {
+      return {
+        left: "0"
+      }
+    }
+    return {
+      left: activeBar ? "0" : "-320px",
+    }
+  }
+
+  const asideBar = () => {
+    return (
+      <>
+        <aside 
+          className="menu"
+          style={styleSideBar()}
+        >
           <div className="head">
             <h1>
               <span
@@ -153,9 +195,34 @@ function App() {
               Cart
             </h2>
           </Link>
+          {isMobile() ? mobileSideBar() : ""}
         </aside>
+        <div 
+          className="black-background"
+          onClick={() => {
+            return setActiveBar(false)
+          }}
+          style={{
+            opacity: activeBar ? "0.6" : "0",
+            zIndex: activeBar ? "1" : "-1"
+          }}
+        ></div>
+      </>
+    )
+  }
 
-        <div className="content">
+  return (
+    <>
+      <div className="main">
+        {asideBar()}
+
+        <div 
+          className="content"
+          style={{
+            width: isMobile() ? "100vw" : "var(--content-head-width)",
+            marginLeft: isMobile() ? "0" : "calc(300px + 5em)"
+          }}
+        >
           <Outlet
             context={{
               setActiveComponent,

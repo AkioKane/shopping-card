@@ -7,6 +7,12 @@ function Cart() {
   const { setCartList, cartList, setActiveComponent } = useOutletContext();
   const [total, setTotal] = useState(0)
 
+  const isMobile = () => {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
+
   useEffect(() => {
     const newTotal = cartList.reduce((acc, el) => acc + el.price, 0);
     setTotal(newTotal);
@@ -22,7 +28,7 @@ function Cart() {
           justifyContent: "center",
           alignItems: "center",
           width: "98%",
-          height: "90%",
+          height: "80%",
           fontFamily: "Park",
           fontSize: "36px",
           fontWeight: "100",
@@ -34,9 +40,14 @@ function Cart() {
 
   return (
     <>
-      <div className="cart-content">
+      <div 
+        className="cart-content"
+        style={{
+          width: isMobile() ? "100%" :"calc(100vw - var(--size-sidebar-width))"
+        }}
+      >
+        <h1 className="head-cart">{`Your Cart (${cartList.length})`}</h1>
         <div className="content-cart">
-          <h1 className="head-cart">Cart</h1>
           {cartList ? checkForEmpty() : ""}
           {cartList ? cartList.map((_, index) => {
             return (
@@ -49,7 +60,9 @@ function Cart() {
             )
           }) : ""}
         </div>
-        <div className="order-bar">
+        <div 
+          className="order-bar"
+        >
           <h1>Subtotal:</h1>
           <h1>{`$ ${total.toLocaleString('en-US')}`}</h1>
         </div>

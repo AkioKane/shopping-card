@@ -22,7 +22,9 @@
 }
 
 :root {
-  --content-head-width: calc(100vw - (300px + 7.5em)); /* 7.5em - margin-right */
+  --size-sidebar-width: 320px;
+  --content-head-width: calc(100vw - (var(--size-sidebar-width) + 7.5em)); /* 7.5em - margin-right */
+  --content-cart-width: calc(100vw - (var(--size-sidebar-width) + 2.5em));
 }
 
 * {
@@ -37,6 +39,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  background-color: rgb(190, 190, 190);
   -webkit-font-smoothing: antialiased;
   height: auto;
 }

@@ -15,6 +15,13 @@
 }
 
 .shop-content .header-shop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(36, 32, 30);
+  color: white;
   font-size: 52px;
-  margin-bottom: 0.75em;
+  margin-bottom: 1.5em;
+  margin-top: 1em;
+  border-radius: 16px;
 }
