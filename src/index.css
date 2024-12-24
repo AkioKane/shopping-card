@@ -34,7 +34,7 @@
 }
 
 body {
-  font-family: "Park";
+  font-family: "Park", sans-serif;
   background-image: url("./assets/back-gradient.jpg");
   background-repeat: no-repeat;
   background-size: cover;

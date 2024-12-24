@@ -16,7 +16,7 @@
   color: white;
   font-family: "Ubuntu";
   box-shadow: 0 0 4px #383838;
-  transition: all 1s ease-in-out;
+  transition: all 0.7s ease-in-out;
   z-index: 2;
   
   * {
@@ -40,7 +40,7 @@
   width: 100vw;
   height: 100vh;
   background-color: black;
-  transition: all 1s linear;
+  transition: all 0.7s linear;
   z-index: 1;
 }
 
@@ -122,7 +122,7 @@
 .show-sidebar {
   position: fixed;
   top: 2em;
-  transition: all 1s ease-in-out;
+  transition: all 0.7s ease-in-out;
   background-color: #383838;
   border: none;
   padding: 5px;

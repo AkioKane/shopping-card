@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import check from "../assets/check.svg";
 import deleteIcon from "../assets/delete.svg";
 import "../styles/Card.css";
@@ -14,11 +15,20 @@ function Card({ dataCategory, id, setCartList, cartList }) {
           console.log(dataCategory[id]);
         }} // delete
       >
-        <img
-          className="img-card"
-          src={dataCategory ? dataCategory[id].image : ""}
-          alt={dataCategory ? "" : "Loading..."}
-        />
+        <Link
+          to={`${dataCategory[id].category}/${id}`}
+          style={{
+            display: "flex",
+            textDecoration: "none",
+            textAlign: "none"
+          }}
+        >
+          <img
+            className="img-card"
+            src={dataCategory ? dataCategory[id].image : ""}
+            alt={dataCategory ? "" : "Loading..."}
+          />
+        </Link>
         <div className="info-card">
           <h1 className="info-h1">{dataCategory ? dataCategory[id].model : "Loading..."}</h1>
           <h2 className="info-h2">
@@ -70,7 +80,16 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
     <>
       <div className="card-cart">
         <div className="content-card-cart">
-          <img className="item-img" src={dataCategory[id].image} alt="item" />
+          <Link
+            to={`../shop/${dataCategory[id].category}/${id}`}
+            style={{
+              display: "flex",
+              textDecoration: "none",
+              textAlign: "none"
+            }}
+          >
+            <img className="item-img" src={dataCategory[id].image} alt="item" />
+          </Link>
           <div className="info-card-cart">
             <h1 className="info-h1">{dataCategory ? dataCategory[id].title : "Loading..."}</h1>
             <h2 className="info-h2">

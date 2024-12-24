@@ -1,0 +1,59 @@
+.content-page {
+  height: 90vh;
+}
+
+.full-card-content {
+  display: flex;
+  background-color: white;
+  border-radius: 16px;
+  padding: 2em;
+}
+
+.img-full-card,
+.information-card {
+  margin: 2em;
+}
+
+.information-card  {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-family: "Ubuntu";
+}
+
+.information-card .pay-container {
+  display: flex;
+  gap: 0.5em;
+}
+
+.information-card h3, 
+.padding-element {
+  background-color: #EEEEEE;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.pay-container .price-card {
+  width: 75%;
+}
+
+.information-card p {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: justify;
+}
+
+.img-full-card {
+  height: 400px;
+  border-radius: 16px;
+}
+
+.back-link {
+  position: absolute;
+  text-decoration: none;
+  text-align: none;
+}
+
+.back-link img {
+  height: 28px;
+}
