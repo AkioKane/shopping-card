@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
 import back from "../assets/back.svg";
+import add from "../assets/add.svg";
+import subtrack from "../assets/subtrack.svg";
 import "../styles/FullCard.css";
 
 function FullCard() {
   const [data, setData] = useState(null);
-  const [valueProducts, setValueProducts] = useState(1)
+  const [price, setPrice] = useState(null);
+  const [valueProducts, setValueProducts] = useState(1);
 
   const {
     dataMobile,
@@ -17,6 +20,7 @@ function FullCard() {
     dataAppliances,
     setCartList,
     cartList,
+    activeURL
   } = useOutletContext();
 
   const { category, cardId } = useParams();
@@ -37,10 +41,17 @@ function FullCard() {
         return setData(dataAppliances[id]);
     }
   }
-
+  
   useEffect(() => {
     switchCategory(category, cardId);
   }, [])
+
+  const historyURL = () => {
+    if (activeURL === "cart") {
+      return "../cart/";
+    }
+    return "../shop/";
+  }
 
   return (
     <>
@@ -52,7 +63,7 @@ function FullCard() {
           }}
         >
           <Link
-            to={`../shop/`}
+            to={historyURL()}
             className="back-link"
           >
             <img src={back} alt="back" />
@@ -63,15 +74,36 @@ function FullCard() {
             alt={data ? data.category : ""} 
           />
           <div className="information-card">
-            <h3>{data ? data.title : ""}</h3>
-            <p>{data ? data.description : ""}</p>
+            <p>{data ? data.title : ""}</p>
+            {/* <p>{data ? data.description : ""}</p> */}
             <div className="pay-container">
-              <h3 className="price-card">{data ? `Cost: $${data.price}` : ""}</h3>
+              <h3 className="price-card">{data ? `$ ${data.price * valueProducts}` : ""}</h3>
               <div className="value-products padding-element">
                 <div className="case-buttons">
-                  <div className="up-row"></div>
+                  <div className="up-row">
+                    <button 
+                      className="subtrack-product"
+                      onClick={() => {
+                        if (valueProducts > 1) {
+                          setValueProducts((valueProducts) => valueProducts - 1)
+                        }
+                        console.log(valueProducts)
+                      }}
+                    >
+                      <img src={subtrack} alt="subtrack" />
+                    </button>
+                  </div>
                   <span>{valueProducts}</span>
-                  <div className="down-row"></div>
+                  <div className="down-row">
+                    <button 
+                      className="add-product"
+                      onClick={() => {
+                        setValueProducts((valueProducts) => valueProducts + 1)
+                      }}
+                    >
+                      <img src={add} alt="add" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

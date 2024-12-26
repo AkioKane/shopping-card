@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import check from "../assets/check.svg";
 import deleteIcon from "../assets/delete.svg";
@@ -6,6 +6,10 @@ import "../styles/Card.css";
 
 function Card({ dataCategory, id, setCartList, cartList }) {
   const [clickedAdd, setClickedAdd] = useState(false);
+  
+  useEffect(() => {
+    dataCategory[id].customId = id;
+  }, [])
 
   return (
     <>
@@ -81,30 +85,30 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
       <div className="card-cart">
         <div className="content-card-cart">
           <Link
-            to={`../shop/${dataCategory[id].category}/${id}`}
+            to={`../shop/${dataCategory.category}/${dataCategory.customId}`}
             style={{
               display: "flex",
               textDecoration: "none",
               textAlign: "none"
             }}
           >
-            <img className="item-img" src={dataCategory[id].image} alt="item" />
+            <img className="item-img" src={dataCategory.image} alt="item" />
           </Link>
           <div className="info-card-cart">
-            <h1 className="info-h1">{dataCategory ? dataCategory[id].title : "Loading..."}</h1>
+            <h1 className="info-h1">{dataCategory ? dataCategory.title : "Loading..."}</h1>
             <h2 className="info-h2">
             {dataCategory
-              ? dataCategory[id].brand.charAt(0).toUpperCase() + dataCategory[id].brand.slice(1)
+              ? dataCategory.brand.charAt(0).toUpperCase() + dataCategory.brand.slice(1)
               : "Loading..."}
             </h2>
-            <p>{dataCategory ? shortSentence(dataCategory[id].description) : "Loading..."}</p>
-            <h3>{dataCategory ? `Price: $ ${dataCategory[id].price.toLocaleString('en-US')}` : "Loading..."}</h3>
+            <p>{dataCategory ? shortSentence(dataCategory.description) : "Loading..."}</p>
+            <h3>{dataCategory ? `Price: $ ${dataCategory.price.toLocaleString('en-US')}` : "Loading..."}</h3>
           </div>
         </div>
         <button 
           className="delete-card"
           onClick={() => {
-            let array = cartList.filter(item => item !== dataCategory[id])
+            let array = cartList.filter(item => item !== dataCategory)
             setCartList(array);
           }}
         >

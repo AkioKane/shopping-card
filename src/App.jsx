@@ -32,6 +32,7 @@ function App() {
   const [cartList, setCartList] = useState([]);
   const [activeBar, setActiveBar] = useState(false);
   const [closeBar, setCloseBar] = useState(false);
+  const [activeURL, setActiveURL] = useState(null);
 
   const isMobile = () => {
     return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -86,6 +87,7 @@ function App() {
       <>
         <aside 
           className="menu"
+          id='main'
           style={styleSideBar()}
         >
           <div className="head">
@@ -234,6 +236,8 @@ function App() {
               dataAppliances,
               cartList,
               setCartList,
+              setActiveURL,
+              activeURL
             }}
           />
         </div>

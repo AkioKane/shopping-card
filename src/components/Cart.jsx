@@ -4,7 +4,12 @@ import { CardCart } from "./Card";
 import "../styles/Cart.css";
 
 function Cart() {
-  const { setCartList, cartList, setActiveComponent } = useOutletContext();
+  const { 
+    setCartList,
+    cartList,
+    setActiveComponent,
+    setActiveURL
+  } = useOutletContext();
   const [total, setTotal] = useState(0)
 
   const isMobile = () => {
@@ -17,6 +22,7 @@ function Cart() {
     const newTotal = cartList.reduce((acc, el) => acc + el.price, 0);
     setTotal(newTotal);
     setActiveComponent("cart");
+    setActiveURL("cart");
   }, [cartList])
 
   const checkForEmpty = () => {
@@ -42,6 +48,12 @@ function Cart() {
     <>
       <div 
         className="cart-content"
+        onClick={() => {
+          cartList.map((_, index) => {
+            console.log(_)
+            console.log(index)
+          })
+        }}
         style={{
           width: isMobile() ? "100%" :"calc(100vw - var(--size-sidebar-width))"
         }}
@@ -52,8 +64,8 @@ function Cart() {
           {cartList ? cartList.map((_, index) => {
             return (
               <CardCart key={index}
-                dataCategory={cartList ? cartList : null}
-                id={index}
+                dataCategory={cartList ? _ : null}
+                id={_.id}
                 cartList={cartList}
                 setCartList={setCartList}
               />

@@ -14,10 +14,12 @@ function Shop() {
     dataAppliances,
     setCartList,
     cartList,
+    setActiveURL,
   } = useOutletContext();
 
   useEffect(() => {
-    setActiveComponent("shop")
+    setActiveComponent("shop");
+    setActiveURL("shop");
   }, [])
 
   const isMobile = () => {
