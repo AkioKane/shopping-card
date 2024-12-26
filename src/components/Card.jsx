@@ -51,6 +51,7 @@ function Card({ dataCategory, id, setCartList, cartList }) {
                   return;
                 }
 
+                dataCategory[id].ammout = 1;
                 setCartList((prevData) => [...prevData, dataCategory[id]]);
                 setClickedAdd(true);
               }}
@@ -80,6 +81,10 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
     return shortenedSentence + "...";
   }
 
+  const finnalyPrice = () => {
+    return dataCategory.price * dataCategory.ammout;
+  }
+
   return (
     <>
       <div className="card-cart">
@@ -102,7 +107,7 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
               : "Loading..."}
             </h2>
             <p>{dataCategory ? shortSentence(dataCategory.description) : "Loading..."}</p>
-            <h3>{dataCategory ? `Price: $ ${dataCategory.price.toLocaleString('en-US')}` : "Loading..."}</h3>
+            <h3>{dataCategory ? `Price: $ ${finnalyPrice().toLocaleString('en-US')}` : "Loading..."}</h3>
           </div>
         </div>
         <button 

@@ -87,7 +87,6 @@ function FullCard() {
                         if (valueProducts > 1) {
                           setValueProducts((valueProducts) => valueProducts - 1)
                         }
-                        console.log(valueProducts)
                       }}
                     >
                       <img src={subtrack} alt="subtrack" />
@@ -105,7 +104,23 @@ function FullCard() {
                     </button>
                   </div>
                 </div>
+
               </div>
+              <button 
+                className="add-to-cart"
+                onClick={() => {
+                  data.ammout = valueProducts;
+                  data.customId = cardId;
+                  if (cartList.includes(data)) {
+                    let array = cartList.filter(item => item !== data)
+                    array.push(data)
+                    setCartList(array);
+                    return;
+                  }
+  
+                  setCartList((prevData) => [...prevData, data]);
+                }}
+              >Add to Cart</button>
             </div>
           </div>
         </div>

@@ -49,10 +49,7 @@ function Cart() {
       <div 
         className="cart-content"
         onClick={() => {
-          cartList.map((_, index) => {
-            console.log(_)
-            console.log(index)
-          })
+          console.log(cartList)
         }}
         style={{
           width: isMobile() ? "100%" :"calc(100vw - var(--size-sidebar-width))"
