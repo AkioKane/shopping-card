@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import back from "../assets/back.svg";
 import add from "../assets/add.svg";
 import subtrack from "../assets/subtrack.svg";
+import remove from "../assets/deleteBlack.svg";
 import "../styles/FullCard.css";
 
 function FullCard() {
   const [data, setData] = useState(null);
   const [price, setPrice] = useState(null);
   const [valueProducts, setValueProducts] = useState(1);
+  const [added, setAdded] = useState(false);
 
   const {
+    setActiveComponent,
     dataMobile,
     dataAudio,
     dataGaming,
@@ -44,6 +47,7 @@ function FullCard() {
   
   useEffect(() => {
     switchCategory(category, cardId);
+    setActiveComponent("shop")
   }, [])
 
   const historyURL = () => {
@@ -53,9 +57,28 @@ function FullCard() {
     return "../shop/";
   }
 
+  const removeIcon = () => {
+    return <>
+      <img src={remove} alt="Remove from Cart"></img>
+    </>
+  }
+
+  const colorBtn = () => {
+    if (cartList.includes(data)) {
+      return ["#ffad98", true, "#EC6142"];
+    } else {
+      return ["#a9f0c5", false, "#3DD68C"];
+    }
+  }
+
   return (
     <>
-      <div className="content-page">
+      <div 
+        className="content-page"
+        onClick={() => {
+          console.log(data)
+        }}
+      >
         <div 
           className="full-card-content"
           onClick={() => {
@@ -85,7 +108,9 @@ function FullCard() {
                       className="subtrack-product"
                       onClick={() => {
                         if (valueProducts > 1) {
-                          setValueProducts((valueProducts) => valueProducts - 1)
+                          setValueProducts((valueProducts) => valueProducts - 1);
+                          let array = cartList.filter(item => item !== data);
+                          setCartList(array);
                         }
                       }}
                     >
@@ -98,6 +123,9 @@ function FullCard() {
                       className="add-product"
                       onClick={() => {
                         setValueProducts((valueProducts) => valueProducts + 1)
+
+                        let array = cartList.filter(item => item !== data)
+                        setCartList(array);
                       }}
                     >
                       <img src={add} alt="add" />
@@ -108,19 +136,37 @@ function FullCard() {
               </div>
               <button 
                 className="add-to-cart"
+                style={{
+                  backgroundColor: added ? `${colorBtn()[2]}` : `${colorBtn()[0]}`
+                }}
+                onMouseEnter={() => {
+                  setAdded(true);
+                }}
+                onMouseLeave={() => {
+                  setAdded(false);
+                }}
                 onClick={() => {
                   data.ammout = valueProducts;
                   data.customId = cardId;
+
+                  console.log(colorBtn()[0])
+
+                  if (colorBtn()[1]) {
+                    let array = cartList.filter(item => item !== data)
+                    setCartList(array);
+                    return;
+                  }
+
                   if (cartList.includes(data)) {
                     let array = cartList.filter(item => item !== data)
                     array.push(data)
                     setCartList(array);
                     return;
                   }
-  
+
                   setCartList((prevData) => [...prevData, data]);
                 }}
-              >Add to Cart</button>
+              >{colorBtn()[1] ? removeIcon() : "Add to Cart"}</button>
             </div>
           </div>
         </div>

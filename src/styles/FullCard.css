@@ -107,6 +107,6 @@
   grid-column: 1 / 3;
   border: none;
   border-radius: 8px;
-  background-color: #FF977D;
   font-family: "Park";
+  transition: all 0.1s ease;
 }

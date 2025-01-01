@@ -19,7 +19,7 @@ function Cart() {
   }
 
   useEffect(() => {
-    const newTotal = cartList.reduce((acc, el) => acc + el.price, 0);
+    const newTotal = cartList.reduce((acc, el) => acc + (el.price * el.ammout), 0);
     setTotal(newTotal);
     setActiveComponent("cart");
     setActiveURL("cart");
