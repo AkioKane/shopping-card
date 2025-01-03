@@ -116,7 +116,6 @@
 }
 
 .card-cart .content-card-cart .info-card-cart h3 {
-  position: absolute;
   bottom: 2em;
   font-family: "Ubuntu-Thin";
   margin-top: 0.5em;
@@ -150,4 +149,10 @@
 
 .delete-card:hover {
   background-color: #d74123;
+}
+
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
 }

@@ -2,11 +2,11 @@
   margin-top: 2em;
   margin-bottom: 2em;
   min-height: 90vh;
-  min-width: 1000px;
   transition: all 0.3s ease-in-out;
 }
 
 .full-card-content {
+  position: relative;
   display: flex;
   background-color: white;
   border-radius: 16px;

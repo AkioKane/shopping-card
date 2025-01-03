@@ -9,8 +9,7 @@ import "../styles/FullCard.css";
 
 function FullCard() {
   const [data, setData] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [valueProducts, setValueProducts] = useState(1);
+  const [valueProducts, setValueProducts] = useState(data ? data.ammout : 1);
   const [added, setAdded] = useState(false);
 
   const {
@@ -83,6 +82,12 @@ function FullCard() {
       dataAppliances
     ])
 
+  const isMobile = () => {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
+
   const historyURL = () => {
     if (activeURL === "cart") {
       return "../cart/";
@@ -114,18 +119,29 @@ function FullCard() {
       >
         <div 
           className="full-card-content"
+          style={{
+            flexDirection: isMobile() ? "column" : "",
+            alignItems: isMobile() ? "center" : ""
+          }}
           onClick={() => {
             console.log(data)
           }}
         >
           <Link
             to={historyURL()}
+            style={{
+              left: isMobile() ? "25px" : "auto"
+            }}
             className="back-link"
           >
             <img src={back} alt="back" />
           </Link>
           <img 
             className="img-full-card"
+            style={{
+              width: isMobile ? "400px" : "auto"
+              
+            }}
             src={data ? data.image : ""} 
             alt={data ? data.category : ""} 
           />
@@ -142,6 +158,7 @@ function FullCard() {
                       onClick={() => {
                         if (valueProducts > 1) {
                           setValueProducts((valueProducts) => valueProducts - 1);
+
                           let array = cartList.filter(item => item !== data);
                           setCartList(array);
                         }
@@ -181,8 +198,6 @@ function FullCard() {
                 onClick={() => {
                   data.ammout = valueProducts;
                   data.customId = cardId;
-
-                  console.log(colorBtn()[0])
 
                   if (colorBtn()[1]) {
                     let array = cartList.filter(item => item !== data)

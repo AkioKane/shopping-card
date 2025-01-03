@@ -138,7 +138,7 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
             <div className="price-container">
               <h3>
                 {dataCategory
-                  ? `Price: $ ${finnalyPrice().toLocaleString("en-US")}`
+                  ? `Price: $${finnalyPrice().toLocaleString("en-US")}`
                   : "Loading..."}
               </h3>
 
