@@ -1,0 +1,165 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App component > render 1`] = `
+<div>
+  <div
+    class="main"
+  >
+    <aside
+      class="menu"
+      id="main"
+      style="left: 0px;"
+    >
+      <div
+        class="head"
+      >
+        <h1>
+          <span
+            style="color: rgb(255, 121, 143); margin: 0px 0.1em 0px 0px;"
+          >
+            Paw
+          </span>
+          Store
+        </h1>
+        <img
+          alt="icon"
+          class="logo-head"
+          src="/src/assets/paw.png"
+        />
+      </div>
+      <a
+        data-discover="true"
+        href="/"
+        style="color: rgb(255, 121, 143); transform: scale(1.1); transition: all 0.1s ease-in-out;"
+      >
+        <h2>
+          <img
+            alt="home"
+            class="icon"
+            src="/src/assets/home-pink.svg"
+          />
+          Home
+        </h2>
+      </a>
+      <a
+        data-discover="true"
+        href="/shop"
+        style="color: white; transform: none; transition: all 0.1s ease-in-out;"
+      >
+        <h2>
+          <img
+            alt="cart"
+            class="icon"
+            src="/src/assets/store.svg"
+          />
+          Shop
+        </h2>
+      </a>
+      <a
+        data-discover="true"
+        href="/cart"
+        style="color: white; transform: none; transition: all 0.1s ease-in-out;"
+      >
+        <h2>
+          <img
+            alt="cart"
+            class="icon"
+            src="/src/assets/shopping_cart.svg"
+          />
+          Cart
+        </h2>
+      </a>
+    </aside>
+    <div
+      class="black-background"
+      style="opacity: 0; z-index: -1;"
+    />
+    <div
+      class="content"
+      style="margin-left: calc(300px + 5em);"
+    />
+  </div>
+</div>
+`;
+
+exports[`App component > render home page 1`] = `
+<div>
+  <div
+    class="main"
+  >
+    <aside
+      class="menu"
+      id="main"
+      style="left: 0px;"
+    >
+      <div
+        class="head"
+      >
+        <h1>
+          <span
+            style="color: rgb(255, 121, 143); margin: 0px 0.1em 0px 0px;"
+          >
+            Paw
+          </span>
+          Store
+        </h1>
+        <img
+          alt="icon"
+          class="logo-head"
+          src="/src/assets/paw.png"
+        />
+      </div>
+      <a
+        data-discover="true"
+        href="/"
+        style="color: rgb(255, 121, 143); transform: scale(1.1); transition: all 0.1s ease-in-out;"
+      >
+        <h2>
+          <img
+            alt="home"
+            class="icon"
+            src="/src/assets/home-pink.svg"
+          />
+          Home
+        </h2>
+      </a>
+      <a
+        data-discover="true"
+        href="/shop"
+        style="color: white; transform: none; transition: all 0.1s ease-in-out;"
+      >
+        <h2>
+          <img
+            alt="cart"
+            class="icon"
+            src="/src/assets/store.svg"
+          />
+          Shop
+        </h2>
+      </a>
+      <a
+        data-discover="true"
+        href="/cart"
+        style="color: white; transform: none; transition: all 0.1s ease-in-out;"
+      >
+        <h2>
+          <img
+            alt="cart"
+            class="icon"
+            src="/src/assets/shopping_cart.svg"
+          />
+          Cart
+        </h2>
+      </a>
+    </aside>
+    <div
+      class="black-background"
+      style="opacity: 0; z-index: -1;"
+    />
+    <div
+      class="content"
+      style="margin-left: calc(300px + 5em);"
+    />
+  </div>
+</div>
+`;

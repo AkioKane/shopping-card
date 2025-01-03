@@ -139,6 +139,7 @@ function App() {
 
           <Link
             to={"shop"}
+            className='shop-link'
             onClick={() => {
               setActiveComponent("shop");
             }}

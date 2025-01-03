@@ -3,6 +3,7 @@
   margin-bottom: 2em;
   min-height: 90vh;
   min-width: 1000px;
+  transition: all 0.3s ease-in-out;
 }
 
 .full-card-content {
@@ -10,6 +11,7 @@
   background-color: white;
   border-radius: 16px;
   padding: 2em;
+  transition: all 0.3s ease-in-out;
 }
 
 .img-full-card,

@@ -28,27 +28,60 @@ function FullCard() {
 
   const { category, cardId } = useParams();
 
-  const switchCategory = (category, id) => {
+  const switchCategory = async (category, id) => {
     switch (category) {
-      case "mobile": 
-        return setData(dataMobile[id]);
+      case "mobile":
+        if (dataMobile === null) {
+          return setData(null)
+        } else {
+          return setData(dataMobile[id]);
+        }
       case "audio":
-        return setData(dataAudio[id]);
+        if (dataAudio === null) {
+          return setData(null);
+        } else {
+          return setData(dataAudio[id]);
+        }
       case "gaming":
-        return setData(dataGaming[id]);
+        if (dataGaming === null) {
+          return setData(null);
+        } else {
+          return setData(dataGaming[id]);
+        }
       case "laptop":
-        return setData(dataLaptop[id]);
+        if (dataLaptop === null) {
+          return setData(null);
+        } else {
+          return setData(dataLaptop[id]);
+        }
       case "tv":
-        return setData(dataTv[id]);
+        if (dataTv === null) {
+          return setData(null);
+        } else {
+          return setData(dataTv[id]);
+        }
       case "appliances":
-        return setData(dataAppliances[id]);
+        if (dataAppliances === null) {
+          return setData(null);
+        } else {
+          return setData(dataAppliances[id]);
+        }
     }
   }
   
   useEffect(() => {
-    switchCategory(category, cardId);
+    setTimeout(() => {
+      switchCategory(category, cardId);
+    })
     setActiveComponent("shop")
-  }, [])
+  }, [
+      dataMobile, 
+      dataAudio, 
+      dataGaming, 
+      dataLaptop, 
+      dataTv,
+      dataAppliances
+    ])
 
   const historyURL = () => {
     if (activeURL === "cart") {
