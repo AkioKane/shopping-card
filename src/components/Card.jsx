@@ -106,6 +106,10 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
     return dataCategory.price * valueProducts;
   };
 
+  const insertAtIndex = (array, index, element) => {
+    return [...array.slice(0, index), element, ...array.slice(index)];
+  }
+
   return (
     <>
       <div className="card-cart">
@@ -149,8 +153,10 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
                     onClick={() => {
                       if (valueProducts > 1) {
                         setValueProducts((valueProducts) => valueProducts - 1)
+
+                        const index = cartList.indexOf(dataCategory);
                         let array = cartList.filter(item => item !== dataCategory);
-                        array.push(dataCategory)
+                        array.insertAtIndex(array, index, dataCategory);
                         setCartList(array);
                         }
                       }}
@@ -164,8 +170,11 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
                     className="add-product"
                     onClick={() => {
                       setValueProducts((valueProducts) => valueProducts + 1)
+
+
+                      const index = cartList.indexOf(dataCategory);
                       let array = cartList.filter(item => item !== dataCategory);
-                      array.push(dataCategory)
+                      array.insertAtIndex(array, index, dataCategory);
                       setCartList(array);
                     }}
                   >
