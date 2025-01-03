@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Outlet, Link } from "react-router-dom";
 import iconHead from "./assets/paw.png";
 import home from "./assets/home.svg";
 import homePink from "./assets/home-pink.svg";
@@ -8,12 +8,12 @@ import shopPink from "./assets/store-pink.svg";
 import cart from "./assets/shopping_cart.svg";
 import cartPink from "./assets/shopping_cart_pink.svg";
 import menu from "./assets/menu.svg";
-import './styles/App.css';
+import "./styles/App.css";
 
 async function getData(category) {
   const response = await fetch(
-    `https://fakestoreapi.in/api/products/category?type=${category}`, 
-    {mode: "cors"}
+    `https://fakestoreapi.in/api/products/category?type=${category}`,
+    { mode: "cors" }
   );
 
   const data = await response.json();
@@ -38,7 +38,7 @@ function App() {
     return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
-  }
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -54,42 +54,38 @@ function App() {
 
   const mobileSideBar = () => {
     return (
-      <button 
-        className='show-sidebar'
+      <button
+        className="show-sidebar"
         style={{
-          left: activeBar ? "calc(-2em + 320px)" : "-2em"
+          left: activeBar ? "calc(-2em + 320px)" : "-2em",
         }}
         onClick={() => {
           if (activeBar) {
-            return setActiveBar(false)
+            return setActiveBar(false);
           }
-          return setActiveBar(true)
+          return setActiveBar(true);
         }}
       >
         <img src={menu} alt="Menu" />
       </button>
-    )
-  }
+    );
+  };
 
   const styleSideBar = () => {
     if (isMobile() === false) {
       return {
-        left: "0"
-      }
+        left: "0",
+      };
     }
     return {
       left: activeBar ? "0" : "-320px",
-    }
-  }
+    };
+  };
 
   const asideBar = () => {
     return (
       <>
-        <aside 
-          className="menu"
-          id='main'
-          style={styleSideBar()}
-        >
+        <aside className="menu" id="main" style={styleSideBar()}>
           <div className="head">
             <h1>
               <span
@@ -139,7 +135,7 @@ function App() {
 
           <Link
             to={"shop"}
-            className='shop-link'
+            className="shop-link"
             onClick={() => {
               setActiveComponent("shop");
             }}
@@ -200,30 +196,30 @@ function App() {
           </Link>
           {isMobile() ? mobileSideBar() : ""}
         </aside>
-        <div 
+        <div
           className="black-background"
           onClick={() => {
-            return setActiveBar(false)
+            return setActiveBar(false);
           }}
           style={{
             opacity: activeBar ? "0.6" : "0",
-            zIndex: activeBar ? "1" : "-1"
+            zIndex: activeBar ? "1" : "-1",
           }}
         ></div>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <>
       <div className="main">
         {asideBar()}
 
-        <div 
+        <div
           className="content"
           style={{
             width: isMobile() ? "100vw" : "var(--content-head-width)",
-            marginLeft: isMobile() ? "0" : "calc(300px + 5em)"
+            marginLeft: isMobile() ? "0" : "calc(300px + 5em)",
           }}
         >
           <Outlet
@@ -238,7 +234,7 @@ function App() {
               cartList,
               setCartList,
               setActiveURL,
-              activeURL
+              activeURL,
             }}
           />
         </div>
@@ -247,4 +243,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

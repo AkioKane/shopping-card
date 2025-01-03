@@ -12,13 +12,18 @@ function Home() {
             }}
           >
             Paw
-          </span>Store
+          </span>
+          Store
         </h1>
-        <span>We sell rare, exclusive products and clothing all over the world.</span>
-        <Link to={"shop"}><button className="btn-shop">View</button></Link>
+        <span>
+          We sell rare, exclusive products and clothing all over the world.
+        </span>
+        <Link to={"shop"}>
+          <button className="btn-shop">View</button>
+        </Link>
       </div>
     </>
-  )
+  );
 }
 
 export default Home;

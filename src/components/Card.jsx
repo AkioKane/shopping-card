@@ -106,10 +106,6 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
     return dataCategory.price * valueProducts;
   };
 
-  const insertAtIndex = (array, index, element) => {
-    return [...array.slice(0, index), element, ...array.slice(index)];
-  }
-
   return (
     <>
       <div className="card-cart">
@@ -148,32 +144,35 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
 
               <div className="case-buttons">
                 <div className="up-row">
-                  <button 
+                  <button
                     className="subtrack-product"
                     onClick={() => {
                       if (valueProducts > 1) {
-                        setValueProducts((valueProducts) => valueProducts - 1)
+                        setValueProducts((valueProducts) => valueProducts - 1);
 
                         const index = cartList.indexOf(dataCategory);
-                        let array = cartList.filter(item => item !== dataCategory);
+                        let array = cartList.filter(
+                          (item) => item !== dataCategory
+                        );
                         array.insertAtIndex(array, index, dataCategory);
                         setCartList(array);
-                        }
-                      }}
+                      }
+                    }}
                   >
                     <img src={subtrack} alt="subtrack" />
                   </button>
                 </div>
-                  <span>{valueProducts}</span>
-                  <div className="down-row">
-                  <button 
+                <span>{valueProducts}</span>
+                <div className="down-row">
+                  <button
                     className="add-product"
                     onClick={() => {
-                      setValueProducts((valueProducts) => valueProducts + 1)
-
+                      setValueProducts((valueProducts) => valueProducts + 1);
 
                       const index = cartList.indexOf(dataCategory);
-                      let array = cartList.filter(item => item !== dataCategory);
+                      let array = cartList.filter(
+                        (item) => item !== dataCategory
+                      );
                       array.insertAtIndex(array, index, dataCategory);
                       setCartList(array);
                     }}
