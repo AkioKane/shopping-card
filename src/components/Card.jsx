@@ -154,7 +154,8 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
                         let array = cartList.filter(
                           (item) => item !== dataCategory
                         );
-                        array.insertAtIndex(array, index, dataCategory);
+                        
+                        array.splice(index, 0, dataCategory)
                         setCartList(array);
                       }
                     }}
@@ -173,7 +174,7 @@ function CardCart({ dataCategory, id, setCartList, cartList }) {
                       let array = cartList.filter(
                         (item) => item !== dataCategory
                       );
-                      array.insertAtIndex(array, index, dataCategory);
+                      array.splice(index, 0, dataCategory)
                       setCartList(array);
                     }}
                   >
